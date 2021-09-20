@@ -77,8 +77,14 @@ def like_unlike(request):
 @login_required(login_url='login')
 def detailPage(request,id):
     istifadeci = Profile.objects.get(user=request.user)
+
     post = get_object_or_404(Post,id=id)
+    
     comments = post.yorum.all()
+
+    # yorumistifadeci = 
+    # print(yorumistifadeci)
+
     comment_sayi = post.yorum.all().count()
     
     hit = Post.objects.filter(id=id).update(hit=F('hit')+1)
@@ -88,7 +94,10 @@ def detailPage(request,id):
         'istifadeci':istifadeci,
         'comments':comments,
         'comment_sayi':comment_sayi,
-        'hit':hit
+        'hit':hit,
+        
+
+        
     }
     return render(request,'main/detail.html',context)
 

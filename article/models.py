@@ -85,17 +85,21 @@ class Post(models.Model):
     
 #!Comment
 class Comment(models.Model):
-    user = models.ForeignKey(Profile,on_delete=models.CASCADE)#Cunki bir istifadeci birden cox posta comment ata biler
+    user = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='adam')#Cunki bir istifadeci birden cox posta comment ata biler
     post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='yorum')#Birden cox posta yorum atila biler bir istifadeci terefinden
     body = models.TextField(max_length=255)
     update_date = models.DateTimeField(auto_now=True)
     created_date = models.DateTimeField(auto_now_add=True)
+    sekil = models.ImageField(Profile,upload_to = 'users')
     
     def __str__(self):
         return self.body[:20]
     
     def count_comments(self):
         return self.yorum.objects.all().count() 
+    
+    def sekiller(self):
+        return self.user.objects.all()
     
     class Meta:
         ordering = ['-created_date']

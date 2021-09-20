@@ -73,7 +73,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'article.views.profile_pic',
-                'account.views.invitatons_receiver_number'
+                'account.views.invitatons_receiver_number',
+        
             ],
         },
     },
