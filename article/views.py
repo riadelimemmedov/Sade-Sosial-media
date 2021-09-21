@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404,HttpResponseRedirect,reverse
 from account.models import Profile 
 from django.urls import reverse
-from .forms import PostForm,UpdateForm,RegisterForm,LoginForm,CreatePostForm
+from .forms import PostForm, TagForms,UpdateForm,RegisterForm,LoginForm,CreatePostForm
 from django.db.models import F,Q
 from django.contrib.auth.models import User
 from .models import Like, Post,Comment,Category,Tag
@@ -365,3 +365,14 @@ def paylasdigim_postlar(request):
     
     return render(request,'main/paylasdigim.html',context)
 
+def tagyarat(request):
+    
+    if request.method == 'POST':
+        form = TagForms(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = TagForms()
+    return render(request,'main/createTag.html',{'form':form})
+        

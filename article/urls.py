@@ -19,6 +19,7 @@ urlpatterns = [
     path('logout/',cixis_et,name='logout'),
     path('create-post/',create_all_post,name='create_post'),
     path('my-post-list',paylasdigim_postlar,name='postlarim'),
+    path('create-tag/',tagyarat,name='create_tag'),
     
     path('reset_password/',auth_views.PasswordResetView.as_view(),name='reset_password'),#Bir kullanıcının, parolayı sıfırlamak için kullanılabilecek bir kerelik kullanım bağlantısı oluşturarak ve bu bağlantıyı kullanıcının kayıtlı e-posta adresine göndererek parolasını sıfırlamasına izin verir.
     path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(),name='password_reset_done'),#return redirect kimidir PassswordResetDovieew email gonderilenden sonra qayidir her hansisa bir seyfeye,yalniz email amma hele biz o emaile girib linke tiklamamisig

@@ -54,3 +54,25 @@ class CreatePostForm(forms.ModelForm):#forms.ModelForm burdaki Model Form yeni m
     class Meta:
         model = Post#model=POST bu Class Meta icinde yaz
         fields = ['title','content','resim','category','tag']
+
+class TagForms(forms.ModelForm):
+    title = forms.CharField(widget=forms.TextInput(attrs={
+        'type':'text',
+        'name':'tag',
+        'class':'form-control',
+        'placeholder':'Tag',
+        'aria-label':'Tag',
+        'aria-describedby':'basic-addon1'
+    }))
+    
+    # slug = forms.SlugField(widget=forms.TextInput(attrs={
+    #     'type':'text',
+    #     'name':'slug',
+    #     'class':'form-control',
+    #     'placeholder':'Slug',
+    #     'aria-label':'Slug',
+    #     'aria-describedby':'basic-addon1'
+    # }))
+    class Meta:
+        model = Tag
+        fields = ['title']
